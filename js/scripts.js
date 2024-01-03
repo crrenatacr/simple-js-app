@@ -7,4 +7,4 @@ let pokemonList= [{name:'pikachu', height:'0.4m', type:'electric', abilities:['s
                  {name:'bellossom', height:'0.4m', type:'grass', abilities:['chlorophyll', 'healer']},
                  {name:'vileplume', height:'1.2m', type:['grass', 'poison'], abilities:['effect-spore', 'chlorophyll']},
                  {name:'horsea', height:'0.4m', type:'water', abilities: ['damp', 'swift-swim', 'sniper']}]
-
+console.log(pokemonList);
