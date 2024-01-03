@@ -8,13 +8,4 @@ let pokemonList= [{name:'pikachu', height:'0.4m', type:'electric', abilities:['s
                  {name:'vileplume', height:'1.2m', type:['grass', 'poison'], abilities:['effect-spore', 'chlorophyll']},
                  {name:'horsea', height:'0.4m', type:'water', abilities: ['damp', 'swift-swim', 'sniper']}]
 console.log(pokemonList);
-pokemonList[0];
-pokemonList[1];
-pokemonList[2];
-pokemonList[3];
-pokemonList[4];
-pokemonList[5];
-pokemonList[6];
-pokemonList[7];
-pokemonList[8];
 
