@@ -1,65 +1,85 @@
 let pokemonList = [
     {
-        name: 'pikachu',
-        height: '0.4m',
+        name: 'Pikachu',
+        height: '0.4',
         type: 'electric',
         abilities: ['static', 'lightningrod']
     },
 
     {
-        name: 'vulpix',
-        height: '0.6m',
+        name: 'Vulpix',
+        height: '0.6',
         type: 'fire',
         abilities: ['flash-fire', 'drought']
     },
 
     {
-        name: 'zubat',
-        height: '0.8m',
+        name: 'Zubat',
+        height: '0.8',
         type: ['poison', 'flying'],
         abilities: ['inner-focus, infiltrator']
     },
 
     {
-        name: 'pidgeot',
-        height: '1.5m',
+        name: 'Pidgeot',
+        height: '1.5',
         type: ['flying', 'normal'],
         abilities: ['keen-eye, tangled-feet, big-pecks']
     },
 
     {
-        name: 'wigglytuff',
-        height: '1m',
+        name: 'Wigglytuff',
+        height: '1',
         type: ['fairy', 'normal'],
         abilities: ['cute-charm, frisk']
     },
 
     {
-        name: 'flareon',
-        height: '0.9m',
+        name: 'Flareon',
+        height: '0.9',
         type: 'fire',
         abilities: ['flash-fire', 'guts']
     },
 
     {
-        name: 'bellossom',
-        height: '0.4m',
+        name: 'Bellossom',
+        height: '0.4',
         type: 'grass',
         abilities: ['chlorophyll', 'healer']
     },
 
     {
-        name: 'vileplume',
+        name: 'Vileplume',
         height: '1.2m',
         type: ['grass', 'poison'],
         abilities: ['effect-spore', 'chlorophyll']
     },
 
     {
-        name: 'horsea',
+        name: 'Horsea',
         height: '0.4m',
         type: 'water',
         abilities: ['damp', 'swift-swim', 'sniper']
     }];
-console.log(pokemonList);
+
+
+    for (let i = 0; i < pokemonList.length; i++) {
+        if (pokemonList[i].height > 0.4 && pokemonList[i].height < 0.8) {
+            document.write(pokemonList[i].name + " - It's a small Pokemon");
+        } else if (pokemonList[i].height >= 0.9 && pokemonList[i].height <= 1.2) {
+            document.write(pokemonList[i].name + " - It's an average Pokemon");
+        } else {
+            document.write(pokemonList[i].name + " - It's a big Pokemon!");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
