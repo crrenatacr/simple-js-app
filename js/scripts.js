@@ -65,7 +65,7 @@ let pokemonList = [
 
     for (let i = 0; i < pokemonList.length; i++) {
         let comment = "";
-        if (pokemonList[i].height = 0.4 && pokemonList[i].height <= 0.8) {
+        if ( pokemonList[i].height >= 0.4 && pokemonList[i].height <= 0.8) {
             comment = " - It's a small Pokemon";
         } else if (pokemonList[i].height >= 0.9 && pokemonList[i].height <= 1.2) {
             comment = " - It's an average Pokemon";
