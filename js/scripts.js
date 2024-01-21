@@ -63,18 +63,18 @@ let pokemonList = [
     }];
 
 
-    for (let i = 0; i < pokemonList.length; i++) {
+    pokemonList.forEach(pokemon => {
         let comment = "";
-        if ( pokemonList[i].height >= 0.4 && pokemonList[i].height <= 0.8) {
+        if (pokemon.height >= 0.4 && pokemon.height <= 0.8) {
             comment = " - It's a small Pokemon";
-        } else if (pokemonList[i].height >= 0.9 && pokemonList[i].height <= 1.2) {
+        } else if (pokemon.height >= 0.9 && pokemon.height <= 1.2) {
             comment = " - It's an average Pokemon";
         } else {
             comment = " - It's a big Pokemon!";
         }
-        const card = `<div class="card"><h2>${pokemonList[i].name}</h2><p>Height: ${pokemonList[i].height} - ${comment}</p></div>`;
+        const card = `<div class="card"><h2>${pokemon.name}</h2><p>Height: ${pokemon.height} - ${comment}</p></div>`;
         document.write(card);
-        }
+    });
 
 
 
