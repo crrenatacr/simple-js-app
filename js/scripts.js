@@ -17,21 +17,21 @@ let pokemonList = [
         name: 'Zubat',
         height: 0.8,
         type: ['poison', 'flying'],
-        abilities: ['inner-focus, infiltrator']
+        abilities: ['inner-focus', 'infiltrator']
     },
 
     {
         name: 'Pidgeot',
         height: 1.5,
         type: ['flying', 'normal'],
-        abilities: ['keen-eye, tangled-feet, big-pecks']
+        abilities: ['keen-eye', 'tangled-feet', 'big-pecks']
     },
 
     {
         name: 'Wigglytuff',
         height: 1,
         type: ['fairy', 'normal'],
-        abilities: ['cute-charm, frisk']
+        abilities: ['cute-charm', 'frisk']
     },
 
     {
@@ -60,29 +60,14 @@ let pokemonList = [
         height: 0.4,
         type: 'water',
         abilities: ['damp', 'swift-swim', 'sniper']
-    }];
+    }
+];
 
-
-    pokemonList.forEach(pokemon => {
-        let comment = "";
-        if (pokemon.height >= 0.4 && pokemon.height <= 0.8) {
-            comment = " - It's a small Pokemon";
-        } else if (pokemon.height >= 0.9 && pokemon.height <= 1.2) {
-            comment = " - It's an average Pokemon";
-        } else {
-            comment = " - It's a big Pokemon!";
-        }
-        const card = `<div class="card"><h2>${pokemon.name}</h2><p>Height: ${pokemon.height} - ${comment}</p></div>`;
-        document.write(card);
-    });
-
-
-
-
-
-
-
-
-
-
-
+pokemonList.forEach(pokemon => {
+    document.write(`<div class="card">`);
+    document.write(`<h2>Name: ${pokemon.name}</h2>`);
+    document.write(`<p>Height: ${pokemon.height}</p>`);
+    document.write(`<p>Type: ${Array.isArray(pokemon.type) ? pokemon.type.join(', ') : pokemon.type}</p>`);
+    document.write(`<p>Abilities: ${pokemon.abilities.join(', ')}</p>`);
+    document.write(`</div>`);
+});
