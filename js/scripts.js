@@ -81,9 +81,19 @@ function add(pokemon) {
 function getAll() {
   return repository;
 }
+function addListItem(pokemon){
+  let.pokemonList = document.querySelector('.pokemon-list');
+  let listpokemon = document.createElement('li');
+  let button = document.createElement('button');
+  button.innerText = pokemon.name;
+  button.classList.add('button-class');
+  listpokemon.appendChild(button);
+  pokemonList.appendChild(listpokemon);
+}
 return {
   add: add,
-  getAll: getAll, 
+  getAll: getAll,
+  addListItem: addListItem
   };
 
 
@@ -94,12 +104,6 @@ type: ['electric'], abilities: ['static', 'lightningrod'] });
 console.log(pokemonRepository.getAll());
 
 pokemonRepository.getAll().forEach(function (pokemon) {
-  let.pokemonList = document.querySelector('.pokemon-list');
-  let listpokemon = document.createElement('li');
-  let button = document.createElement('button');
-  button.innerText = pokemon.name;
-  button.classList.add('button-class');
-  listpokemon.appendChild(button);
-  pokemonList.appendChild(listpokemon);
-
+  
+  pokemonRepository.addListItem(pokemon);
 });
