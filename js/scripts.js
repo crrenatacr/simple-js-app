@@ -7,48 +7,56 @@ let pokemonRepository = (function() {
         type: 'electric',
         abilities: ['static', 'lightningrod']
       },
+
       {
         name: 'Vulpix',
         height: 0.6,
         type: 'fire',
         abilities: ['flash-fire', 'drought']
       },
+
       {
         name: 'Zubat',
         height: 0.8,
         type: ['poison', 'flying'],
         abilities: ['inner-focus', 'infiltrator']
       },
+
       {
         name: 'Pidgeot',
         height: 1.5,
         type: ['flying', 'normal'],
         abilities: ['keen-eye', 'tangled-feet', 'big-pecks']
       },
+
       {
         name: 'Wigglytuff',
         height: 1,
         type: ['fairy', 'normal'],
         abilities: ['cute-charm', 'frisk']
       },
+
       {
         name: 'Flareon',
         height: 0.9,
         type: 'fire',
         abilities: ['flash-fire', 'guts']
       },
+
       {
         name: 'Bellossom',
         height: 0.4,
         type: 'grass',
         abilities: ['chlorophyll', 'healer']
       },
+
       {
         name: 'Vileplume',
         height: 1.2,
         type: ['grass', 'poison'],
         abilities: ['effect-spore', 'chlorophyll']
       },
+
       {
         name: 'Horsea',
         height: 0.4,
@@ -76,40 +84,23 @@ let pokemonRepository = (function() {
     });
   }
 
-  function addListItem(pokemon) {
-    let listItem = document.createElement('li');
-    let button = document.createElement('button');
-    button.innerText = pokemon.name;
-    button.classList.add('pokemon-button');
-    listItem.appendChild(button);
-    pokemonListContainer.appendChild(listItem);
-  }
-
   return {
     getAll: getAll,
     add: add,
-    findByName: findByName,
-    addListItem: addListItem
+    findByName: findByName
   };
 })();
 
-let pokemonListContainer = document.createElement('ul');
+console.log(pokemonRepository.getAll());
+pokemonRepository.add({name: "Pikachu", height: 0.3,
+type: ["electric"] });
 
-pokemonRepository.getAll().forEach(function(pokemon) {
-  pokemonRepository.addListItem(pokemon);
+console.log(pokemonRepository.getAll());
+
+pokemonRepository.getAll().forEach (function (pokemon) {
+  let.pokemonList = document.querySelector(".pokemon-list");
+  let listpokemon = document.createElement("li");
+  let button = document.createElement("button");
+  button.innerText = "placeholder";
+  button.classList.add("button=class")
 });
-
-document.body.appendChild(document.createElement('h2')).innerText = 'Pokémon List';
-document.body.appendChild(pokemonListContainer);
-
-document.body.appendChild(document.createElement('h2')).innerText = 'Find Pokémon by Name';
-let foundPokemons = pokemonRepository.findByName('Pikachu');
-if (foundPokemons.length > 0) {
-  let paragraph = document.createElement('p');
-  paragraph.innerText = 'Found Pokémon: ' + foundPokemons[0].name;
-  document.body.appendChild(paragraph);
-} else {
-  let paragraph = document.createElement('p');
-  paragraph.innerText = 'No Pokémon found with the name Pikachu';
-  document.body.appendChild(paragraph);
-}
