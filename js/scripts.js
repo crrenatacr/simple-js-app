@@ -63,7 +63,7 @@ var pokemonRepository = (function () {
       abilities: ['damp', 'swift-swim', 'sniper']
     }
   ];
-})();
+
 
 function add(pokemon) {
   if (
@@ -82,7 +82,7 @@ function getAll() {
   return repository;
 }
 function addListItem(pokemon){
-  let.pokemonList = document.querySelector('.pokemon-list');
+  let pokemonList = document.querySelector('.pokemon-list');
   let listpokemon = document.createElement('li');
   let button = document.createElement('button');
   button.innerText = pokemon.name;
@@ -95,7 +95,7 @@ return {
   getAll: getAll,
   addListItem: addListItem
   };
-
+})();
 
 console.log(pokemonRepository.getAll());
 pokemonRepository.add({ name: 'Pikachu', height: 0.3,
