@@ -64,44 +64,34 @@ var pokemonRepository = (function () {
     }
   ];
 
-
-function add(pokemon) {
-  if (
-    typeof pokemon === 'object' &&
-    'name' in pokemon &&
-    'height' in pokemon &&
-    'type' in pokemon
-  ) {
-    repository.push(pokemon);
-  } else {
-    console.log('Invalid Pokemon data.');
+  // Public functions
+  function getAll() {
+    return pokemonList;
   }
-}
 
-function getAll() {
-  return repository;
-}
-function addListItem(pokemon){
-  let pokemonList = document.querySelector('.pokemon-list');
-  let listpokemon = document.createElement('li');
-  let button = document.createElement('button');
-  button.innerText = pokemon.name;
-  button.classList.add('button-class');
-  listpokemon.appendChild(button);
-  pokemonList.appendChild(listpokemon);
-}
-return {
-  add: add,
-  getAll: getAll,
-  addListItem: addListItem
+  function add(item) {
+    if (typeof item === 'object' && 'name' in item && 'height' in item && 'type' in item) {
+      pokemonList.push(item);
+    } else {
+      console.log('Invalid Pokemon data.');
+    }
+  }
+
+  // Return an object with public functions
+  return {
+    getAll: getAll,
+    add: add
   };
 })();
 
+// Test the functions
 console.log(pokemonRepository.getAll());
 
-console.log(pokemonRepository.getAll());
-
-pokemonRepository.getAll().forEach(function (pokemon) {
-  
-  pokemonRepository.addListItem(pokemon);
+pokemonRepository.add({
+  name: 'Charmander',
+  height: 0.6,
+  type: 'fire',
+  abilities: ['blaze']
 });
+
+console.log(pokemonRepository.getAll());
