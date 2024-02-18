@@ -98,8 +98,6 @@ return {
 })();
 
 console.log(pokemonRepository.getAll());
-pokemonRepository.add({ name: 'Pikachu', height: 0.3,
-type: ['electric'], abilities: ['static', 'lightningrod'] });
 
 console.log(pokemonRepository.getAll());
 
