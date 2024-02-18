@@ -64,34 +64,62 @@ var pokemonRepository = (function () {
     }
   ];
 
-  // Public functions
-  function getAll() {
-    return pokemonList;
-  }
-
-  function add(item) {
-    if (typeof item === 'object' && 'name' in item && 'height' in item && 'type' in item) {
-      pokemonList.push(item);
-    } else {
-      console.log('Invalid Pokemon data.');
+    function add(pokemon) {
+      if (
+        typeof pokemon === 'object' &&
+        'name' in pokemon &&
+        'height' in pokemon &&
+        'type' in pokemon
+      ) {
+        repository.push(pokemon);
+      } else {
+        console.log('Invalid Pokemon data.');
+      }
     }
-  }
-
-  // Return an object with public functions
-  return {
-    getAll: getAll,
-    add: add
-  };
-})();
-
-// Test the functions
-console.log(pokemonRepository.getAll());
-
-pokemonRepository.add({
-  name: 'Charmander',
-  height: 0.6,
-  type: 'fire',
-  abilities: ['blaze']
-});
-
-console.log(pokemonRepository.getAll());
+  
+    function getAll() {
+      return repository;
+    }
+  
+    function addListItem(pokemon) {
+      let pokemonList = document.querySelector('.pokemon-list');
+      let listItem = document.createElement('li'); // Changed div to li
+      listItem.classList.add('card');
+  
+      let button = document.createElement('button'); // Create button element
+      button.innerText = pokemon.name; // Set button text to Pokémon's name
+      listItem.appendChild(button); // Append button to list item
+  
+      let cardBody = document.createElement('div');
+      cardBody.classList.add('card-body');
+  
+      let height = document.createElement('p');
+      height.innerText = 'Height: ' + pokemon.height;
+  
+      let type = document.createElement('p');
+      type.innerText = 'Type: ' + pokemon.type;
+  
+      let abilities = document.createElement('p');
+      abilities.innerText = 'Abilities: ' + pokemon.abilities.join(', ');
+  
+      cardBody.appendChild(height);
+      cardBody.appendChild(type);
+      cardBody.appendChild(abilities);
+  
+      listItem.appendChild(cardBody); // Append card body to list item
+      pokemonList.appendChild(listItem); // Append list item to Pokemon list
+    }
+  
+    // Add the addListItem function to the returned object
+    return {
+      add: add,
+      getAll: getAll,
+      addListItem: addListItem
+    };
+  })();
+  
+  // Call addListItem inside the forEach loop
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+  
