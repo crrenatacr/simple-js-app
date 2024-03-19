@@ -79,7 +79,7 @@ var pokemonRepository = (function () {
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
       console.log(pokemon);
-      // Display additional details in UI (you can implement this part)
+      showModal(pokemon);
     });
   }
 
@@ -95,6 +95,70 @@ var pokemonRepository = (function () {
     if (loadingMessage) {
       loadingMessage.remove();
     }
+  }
+
+  function showModal(pokemon) {
+    // Create modal container
+    let modalContainer = document.createElement('div');
+    modalContainer.classList.add('modal-container');
+
+    // Create modal content
+    let modalContent = document.createElement('div');
+    modalContent.classList.add('modal-content');
+
+    // Create close button
+    let closeButton = document.createElement('button');
+    closeButton.innerText = 'Close';
+    closeButton.classList.add('modal-close');
+
+    // Add close button event listener
+    closeButton.addEventListener('click', function () {
+      closeModal(modalContainer);
+    });
+
+    // Create image element
+    let pokemonImage = document.createElement('img');
+    pokemonImage.src = pokemon.imgUrl;
+    pokemonImage.alt = pokemon.name;
+    pokemonImage.classList.add('modal-image');
+
+    // Create name paragraph
+    let nameParagraph = document.createElement('p');
+    nameParagraph.innerText = 'Name: ' + pokemon.name;
+
+    // Create height paragraph
+    let heightParagraph = document.createElement('p');
+    heightParagraph.innerText = 'Height: ' + pokemon.height;
+
+    // Append elements to modal content
+    modalContent.appendChild(closeButton);
+    modalContent.appendChild(pokemonImage);
+    modalContent.appendChild(nameParagraph);
+    modalContent.appendChild(heightParagraph);
+
+    // Append modal content to modal container
+    modalContainer.appendChild(modalContent);
+
+    // Append modal container to body
+    document.body.appendChild(modalContainer);
+
+    // Allow closing modal by clicking outside of it
+    window.addEventListener('click', function (event) {
+      if (event.target === modalContainer) {
+        closeModal(modalContainer);
+      }
+    });
+
+    // Allow closing modal via keyboard
+    window.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeModal(modalContainer);
+      }
+    });
+  }
+
+  function closeModal(modalContainer) {
+    document.body.removeChild(modalContainer);
   }
 
   return {
