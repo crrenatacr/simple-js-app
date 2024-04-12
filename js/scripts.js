@@ -1,6 +1,6 @@
 var pokemonRepository = (function () {
-  let repository = [];
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+  var repository = [];
+  var apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
 
   function add(pokemon) {
     if (
@@ -19,12 +19,14 @@ var pokemonRepository = (function () {
   }
 
   function addListItem(pokemon) {
-    let pokemonList = document.querySelector('.pokemon-list');
-    let listItem = document.createElement('li');
+    var pokemonList = document.querySelector('.pokemon-list');
+    var listItem = document.createElement('li');
     listItem.classList.add('card');
 
-    let button = document.createElement('button');
+    var button = document.createElement('button');
     button.innerText = pokemon.name;
+    button.classList.add('btn');
+    button.classList.add('card-button'); // Add a class for button styling
     listItem.appendChild(button);
 
     button.addEventListener('click', function () {
@@ -43,7 +45,7 @@ var pokemonRepository = (function () {
       .then(function (data) {
         hideLoadingMessage();
         data.results.forEach(function (item) {
-          let pokemon = {
+          var pokemon = {
             name: item.name,
             detailsUrl: item.url,
           };
@@ -78,97 +80,80 @@ var pokemonRepository = (function () {
 
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
-      console.log(pokemon);
       showModal(pokemon);
     });
   }
 
   function showLoadingMessage() {
-    let loadingMessage = document.createElement('div');
+    var loadingMessage = document.createElement('div');
     loadingMessage.innerText = 'Loading...';
     loadingMessage.classList.add('loading-message');
     document.body.appendChild(loadingMessage);
   }
 
   function hideLoadingMessage() {
-    let loadingMessage = document.querySelector('.loading-message');
+    var loadingMessage = document.querySelector('.loading-message');
     if (loadingMessage) {
       loadingMessage.remove();
     }
   }
 
   function showModal(pokemon) {
-    // Create modal overlay
-    let modalOverlay = document.createElement('div');
+    var modalOverlay = document.createElement('div');
     modalOverlay.classList.add('modal-overlay');
 
-    // Create modal container
-    let modalContainer = document.createElement('div');
+    var modalContainer = document.createElement('div');
     modalContainer.classList.add('modal-container');
 
-    // Create modal content
-    let modalContent = document.createElement('div');
+    var modalContent = document.createElement('div');
     modalContent.classList.add('modal-content');
 
-    // Create close button
-    let closeButton = document.createElement('button');
+    var closeButton = document.createElement('button');
     closeButton.innerText = 'Close';
     closeButton.classList.add('modal-close');
 
-    // Add close button event listener
     closeButton.addEventListener('click', function () {
-      closeModal(modalOverlay);
+      closeModal();
     });
 
-    // Create image element
-    let pokemonImage = document.createElement('img');
+    var pokemonImage = document.createElement('img');
     pokemonImage.src = pokemon.imgUrl;
     pokemonImage.alt = pokemon.name;
     pokemonImage.classList.add('modal-image');
 
-    // Create name paragraph
-    let nameParagraph = document.createElement('p');
+    var nameParagraph = document.createElement('p');
     nameParagraph.innerText = 'Name: ' + pokemon.name;
 
-    // Create height paragraph
-    let heightParagraph = document.createElement('p');
+    var heightParagraph = document.createElement('p');
     heightParagraph.innerText = 'Height: ' + pokemon.height;
 
-    // Create types paragraph
-    let typesParagraph = document.createElement('p');
-    typesParagraph.innerText = 'Types: ' + pokemon.types.join(', ');
-
-    // Create abilities paragraph
-    let abilitiesParagraph = document.createElement('p');
-    abilitiesParagraph.innerText = 'Abilities: ' + pokemon.abilities.join(', ');
-
-    // Append elements to modal content
     modalContent.appendChild(closeButton);
     modalContent.appendChild(pokemonImage);
     modalContent.appendChild(nameParagraph);
     modalContent.appendChild(heightParagraph);
-    modalContent.appendChild(typesParagraph);
-    modalContent.appendChild(abilitiesParagraph);
 
-    // Append modal content to modal container
     modalContainer.appendChild(modalContent);
 
-    // Append modal container to modal overlay
     modalOverlay.appendChild(modalContainer);
 
-    // Append modal overlay to body
     document.body.appendChild(modalOverlay);
 
-    // Allow closing modal via keyboard
+    window.addEventListener('click', function (event) {
+      if (event.target === modalOverlay) {
+        closeModal();
+      }
+    });
+
     window.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
-        closeModal(modalOverlay);
+        closeModal();
       }
     });
   }
 
-  function closeModal(modalOverlay) {
-    document.body.removeChild(modalOverlay);
+  function closeModal() {
+    var modalOverlay = document.querySelector('.modal-overlay');
+    modalOverlay.remove();
   }
 
   return {
