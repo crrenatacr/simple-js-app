@@ -98,6 +98,10 @@ var pokemonRepository = (function () {
   }
 
   function showModal(pokemon) {
+    // Create modal overlay
+    let modalOverlay = document.createElement('div');
+    modalOverlay.classList.add('modal-overlay');
+
     // Create modal container
     let modalContainer = document.createElement('div');
     modalContainer.classList.add('modal-container');
@@ -113,7 +117,7 @@ var pokemonRepository = (function () {
 
     // Add close button event listener
     closeButton.addEventListener('click', function () {
-      closeModal(modalContainer);
+      closeModal(modalOverlay);
     });
 
     // Create image element
@@ -130,35 +134,41 @@ var pokemonRepository = (function () {
     let heightParagraph = document.createElement('p');
     heightParagraph.innerText = 'Height: ' + pokemon.height;
 
+    // Create types paragraph
+    let typesParagraph = document.createElement('p');
+    typesParagraph.innerText = 'Types: ' + pokemon.types.join(', ');
+
+    // Create abilities paragraph
+    let abilitiesParagraph = document.createElement('p');
+    abilitiesParagraph.innerText = 'Abilities: ' + pokemon.abilities.join(', ');
+
     // Append elements to modal content
     modalContent.appendChild(closeButton);
     modalContent.appendChild(pokemonImage);
     modalContent.appendChild(nameParagraph);
     modalContent.appendChild(heightParagraph);
+    modalContent.appendChild(typesParagraph);
+    modalContent.appendChild(abilitiesParagraph);
 
     // Append modal content to modal container
     modalContainer.appendChild(modalContent);
 
-    // Append modal container to body
-    document.body.appendChild(modalContainer);
+    // Append modal container to modal overlay
+    modalOverlay.appendChild(modalContainer);
 
-    // Allow closing modal by clicking outside of it
-    window.addEventListener('click', function (event) {
-      if (event.target === modalContainer) {
-        closeModal(modalContainer);
-      }
-    });
+    // Append modal overlay to body
+    document.body.appendChild(modalOverlay);
 
     // Allow closing modal via keyboard
     window.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
-        closeModal(modalContainer);
+        closeModal(modalOverlay);
       }
     });
   }
 
-  function closeModal(modalContainer) {
-    document.body.removeChild(modalContainer);
+  function closeModal(modalOverlay) {
+    document.body.removeChild(modalOverlay);
   }
 
   return {
