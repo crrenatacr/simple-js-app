@@ -12,12 +12,21 @@ body {
   padding: 0 20px;
 }
 
+/* Custom CSS to style the list group */
 .pokemon-list {
-  list-style: none;
-  padding: 0;
   display: flex;
-  flex-wrap: wrap; /* Allow flex items to wrap */
-  justify-content: center; /* Center the columns horizontally */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* Distribute items evenly */
+  padding-left: 0;
+  /* Remove default padding */
+}
+
+.list-group-item {
+  flex-basis: calc(33.33% - 20px);
+  /* Adjust the width of each item */
+  margin-bottom: 20px;
+  /* Add bottom margin for spacing */
 }
 
 /* Loading message */
@@ -40,23 +49,33 @@ body {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
   padding: 10px;
   margin: 10px;
-  text-align: center; /* Center the button */
-  width: calc(25% - 20px); /* Set width for each column */
+  text-align: center;
+  /* Center the button */
+  width: calc(25% - 20px);
+  /* Set width for each column */
 }
 
 .card button {
-  background-color: #ffcccc; /* Lighter red color */
-  color: #000; /* Black color for text */
+  background-color: #6c757d;
+  /* Bootstrap secondary button color */
+  color: #fff;
+  /* White color for text */
   border: none;
-  padding: 10px 20px; /* Adjust button padding */
+  padding: 10px 20px;
+  /* Adjust button padding */
   border-radius: 5px;
   cursor: pointer;
-  width: 100%; /* Button takes full width of the card */
-  text-transform: capitalize; /* Capitalize the first letter of each word */
+  width: 100%;
+  /* Button takes full width of the card */
+  text-transform: capitalize;
+  /* Capitalize the first letter of each word */
+  transition: background-color 0.3s;
+  /* Smooth transition on hover */
 }
 
 .card button:hover {
-  background-color: #ff9999; /* Lighter red color on hover */
+  background-color: #28a745;
+  /* Bootstrap success color on hover */
 }
 
 .card p {
@@ -65,18 +84,30 @@ body {
 
 /* Header */
 header {
-  background-color: #f2f2f2; /* Light grey color */
+  background: linear-gradient(to bottom, #ff7e75, #ffb961);
+  /* Gradient from coral to peach */
   border-radius: 20px 20px 0 0;
   text-align: center;
   padding: 20px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Slightly larger shadow */
+  color: #fff;
+  /* White font color */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Use a modern font */
+  text-transform: uppercase;
+  /* Uppercase text */
+  letter-spacing: 1px;
+  /* Add some letter spacing */
 }
 
 header h1 {
   font-family: 'Arial Black', sans-serif;
   font-size: 36px;
-  color: rgba(0, 0, 0, 0.8); /* Dark grey color with opacity */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add text shadow */
+  color: rgba(0, 0, 0, 0.8);
+  /* Dark grey color with opacity */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add text shadow */
 }
 
 /* Card body */
@@ -95,7 +126,8 @@ header h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,12 +137,15 @@ header h1 {
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
-  max-width: 400px; /* Adjust the max width as needed */
+  max-width: 400px;
+  /* Adjust the max width as needed */
 }
 
 .modal-image {
-  width: 100px; /* Adjust as needed */
-  height: 100px; /* Adjust as needed */
+  width: 100px;
+  /* Adjust as needed */
+  height: 100px;
+  /* Adjust as needed */
   display: block;
   margin: 0 auto;
 }
@@ -127,7 +162,8 @@ header h1 {
   background-color: #f0f0f0;
   color: #000;
   border: none;
-  padding: 5px 10px; /* Adjust button padding */
+  padding: 5px 10px;
+  /* Adjust button padding */
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
