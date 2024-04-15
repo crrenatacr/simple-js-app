@@ -20,16 +20,35 @@ var pokemonRepository = (function () {
     return repository;
   }
 
-  function addDropdownItem(pokemon) {
-    var dropdown = document.getElementById('pokemonDropdown');
-    var dropdownItem = document.createElement('a');
-    dropdownItem.classList.add('dropdown-item');
-    dropdownItem.innerText = pokemon.name;
-    dropdownItem.setAttribute('href', '#');
-    dropdownItem.addEventListener('click', function () {
+  function addListItem(pokemon) {
+    var pokemonList = document.querySelector('.pokemon-list');
+    var listItem = document.createElement('li');
+    listItem.classList.add('list-group-item', 'list-group-item-action'); // Adding Bootstrap classes
+    listItem.setAttribute('role', 'listitem'); // Adding ARIA role
+
+    // Creating a button element with Bootstrap button utility classes
+    var button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('btn', 'btn-secondary', 'btn-block'); // Adding Bootstrap button classes
+    button.setAttribute('type', 'button'); // Setting button type to 'button' to prevent form submission
+
+    // Add event listeners to handle button hover
+    button.addEventListener('mouseover', function () {
+      button.classList.remove('btn-secondary');
+      button.classList.add('btn-success');
+    });
+
+    button.addEventListener('mouseout', function () {
+      button.classList.remove('btn-success');
+      button.classList.add('btn-secondary');
+    });
+
+    button.addEventListener('click', function () {
       showDetails(pokemon);
     });
-    dropdown.appendChild(dropdownItem);
+
+    listItem.appendChild(button); // Appending the button to the list item
+    pokemonList.appendChild(listItem); // Appending the list item to the Pokemon list
   }
 
   function loadList() {
@@ -126,7 +145,7 @@ var pokemonRepository = (function () {
   return {
     add: add,
     getAll: getAll,
-    addDropdownItem: addDropdownItem,
+    addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
     showDetails: showDetails,
@@ -136,6 +155,6 @@ var pokemonRepository = (function () {
 // Function to initialize the Pokemon repository
 pokemonRepository.loadList().then(function () {
   pokemonRepository.getAll().forEach(function (pokemon) {
-    pokemonRepository.addDropdownItem(pokemon);
+    pokemonRepository.addListItem(pokemon);
   });
 });
