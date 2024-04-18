@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="dist/styles.css"> <!-- Link to styles.css -->
 </head>
+
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg" width="30" height="30"
+        class="d-inline-block align-top" alt="">
       Pokedex App
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -20,32 +23,17 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active mr-2">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown mr-0">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            More Links
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
+        <!-- Remove the "Home" link -->
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      <!-- Remove the search form -->
     </div>
   </nav>
 
   <!-- Video Header -->
   <div class="video-header">
     <video autoplay muted loop class="d-block w-100">
-      <source src="https://www.desktophut.com/files/1683999977-1683999977-pokemon-ash-live-wallpaper.mp4" type="video/mp4">
+      <source src="https://www.desktophut.com/files/1683999977-1683999977-pokemon-ash-live-wallpaper.mp4"
+        type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <div class="overlay"></div>
@@ -58,7 +46,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="container">
     <div class="row pokemon-list">
       <!-- Pokémon list items will be dynamically added here -->
@@ -66,7 +54,8 @@
   </div>
 
   <!-- Bootstrap Modal -->
-  <div class="modal fade" id="pokemonModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModalLabel" aria-hidden="true">
+  <div class="modal fade" id="pokemonModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -97,4 +86,5 @@
     crossorigin="anonymous"></script>
   <script src="dist/scripts.js"></script>
 </body>
+
 </html>
